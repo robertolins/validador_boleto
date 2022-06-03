@@ -1,0 +1,33 @@
+{
+  "name": "validador_boleto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js --ignore tests",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertolins/validador_boleto.git"
+  },
+  "author": "Roberto Lima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robertolins/validador_boleto/issues"
+  },
+  "homepage": "https://github.com/robertolins/validador_boleto#readme",
+  "devDependencies": {
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "moment": "^2.29.3"
+  },
+  "node": {
+    "version": "16.13"
+  }
+}

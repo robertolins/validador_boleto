@@ -16,10 +16,12 @@ class BoletoService {
 }
 
 validarLinhaDigitavel = (linhaDigitavel) => {
-    if(isNaN(linhaDigitavel.replaceAll('.', '')) || linhaDigitavel == ""){  // Lançará o erro caso o conteúdo da linha digitável não seja numérico 
+    linhaDigitavel = linhaDigitavel.replaceAll('.', '').replaceAll(' ', '')
+    
+    if(isNaN(linhaDigitavel) || linhaDigitavel == ""){  // Lançará o erro caso o conteúdo da linha digitável não seja numérico 
         throw new ArgumentoInvalido('Linha Digitável inválida!')
-    }else if(linhaDigitavel.replaceAll('.', '').length != TAMANHO_LINHA_DIGITAVEL.TITULO && 
-        linhaDigitavel.replaceAll('.', '').length != TAMANHO_LINHA_DIGITAVEL.CONVENIO){
+    }else if(linhaDigitavel.length != TAMANHO_LINHA_DIGITAVEL.TITULO && 
+        linhaDigitavel.length != TAMANHO_LINHA_DIGITAVEL.CONVENIO){
         throw new ArgumentoInvalido('Tipo de Boleto não identificado ou Linha Digitável inválida!')
     }
 }

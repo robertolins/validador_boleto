@@ -1,5 +1,6 @@
 const moment = require('moment')
 const { ArgumentoInvalido } = require('../utils/errors')
+const { DATA_BASE_FATOR_VENCIMENTO } = require('../utils/constantes')
 
 const CalculoModuloService = require('./calculo-modulo-service')
 
@@ -72,7 +73,7 @@ const validarCodigoDeBarras = (codigoBarras) => {
 }
 
 const calcularDataVencimento = (fatorVencimento) => {
-    const dataBase = "1997-10-07"
+    const dataBase = DATA_BASE_FATOR_VENCIMENTO
 
     const dataVencimento = moment(dataBase, "YYYY-MM-DD")
         .add(fatorVencimento, 'days')

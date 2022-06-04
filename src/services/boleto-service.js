@@ -1,14 +1,15 @@
 const BoletoTituloService = require('./boleto-titulo-service')
 const BoletoConvenioService = require('./boleto-convenio-service')
 const { ArgumentoInvalido } = require('../utils/errors');
+const {TAMANHO_LINHA_DIGITAVEL} = require('../utils/constantes')
 
 class BoletoService {
     buscarBoleto = async (linhaDigitavel) => {
         validarLinhaDigitavel(linhaDigitavel)
 
-        if(linhaDigitavel.length == 47){
+        if(linhaDigitavel.length == TAMANHO_LINHA_DIGITAVEL.TITULO){
             return new BoletoTituloService().retornarDadosBoleto(linhaDigitavel)
-        }else if(linhaDigitavel.length == 48){
+        }else if(linhaDigitavel.length == TAMANHO_LINHA_DIGITAVEL.CONVENIO){
             return new BoletoConvenioService().retornarDadosBoleto(linhaDigitavel)
         }
     }
@@ -17,7 +18,8 @@ class BoletoService {
 validarLinhaDigitavel = (linhaDigitavel) => {
     if(isNaN(linhaDigitavel.replaceAll('.', '')) || linhaDigitavel == ""){  // Lançará o erro caso o conteúdo da linha digitável não seja numérico 
         throw new ArgumentoInvalido('Linha Digitável inválida!')
-    }else if(linhaDigitavel.length != 47 && linhaDigitavel.length != 48){
+    }else if(linhaDigitavel.replaceAll('.', '').length != TAMANHO_LINHA_DIGITAVEL.TITULO && 
+        linhaDigitavel.replaceAll('.', '').length != TAMANHO_LINHA_DIGITAVEL.CONVENIO){
         throw new ArgumentoInvalido('Tipo de Boleto não identificado ou Linha Digitável inválida!')
     }
 }

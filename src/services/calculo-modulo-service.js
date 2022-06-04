@@ -1,3 +1,5 @@
+const {MODULOS} = require('../utils/constantes')
+
 class CalculoModuloService {
     calcularModulo10 = (campo) => {
         let multiplicador = 2
@@ -16,7 +18,7 @@ class CalculoModuloService {
         const soma = linhaPosMultiplicacao
             .reduce((prev, current) => parseInt(prev) + parseInt(current), 0)
         
-        const modulo = 10
+        const modulo = MODULOS.MODULO_10
         const resto = soma % modulo
 
         return (resto != 0) ? (modulo-resto) : 0
@@ -37,7 +39,7 @@ class CalculoModuloService {
         const soma = linhaPosMultiplicacao
             .reduce((prev, current) => parseInt(prev) + parseInt(current), 0)
 
-        const modulo = 11
+        const modulo = MODULOS.MODULO_11
         const resto = soma % modulo
         let digitoVerificador = modulo - resto
 
